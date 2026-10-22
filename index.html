@@ -1,0 +1,797 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flora Garden | Taman Bunga</title>
+
+<style>
+:root {
+    --maroon: #800020;
+    --maroon-dark: #4D071B;
+    --maroon-light: #A83B58;
+    --white: #FFFFFF;
+    --cream: #FFF9F7;
+    --text: #35252A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 7%;
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 15px #80002012;
+}
+
+.logo {
+    color: var(--maroon);
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--maroon-light);
+}
+
+nav ul {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--maroon-light);
+}
+
+/* HERO */
+.hero {
+    min-height: 590px;
+    display: flex;
+    align-items: center;
+    padding: 80px 8%;
+    color: white;
+    background:
+        linear-gradient(90deg, #4D071BF0, #80002085),
+        url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.tag {
+    display: inline-block;
+    border: 1px solid #ffffff80;
+    padding: 7px 17px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    background: #ffffff15;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #FFDCE5;
+}
+
+.hero p {
+    font-size: 17px;
+    margin-bottom: 30px;
+    max-width: 580px;
+    color: #fff1f4;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 26px;
+    border-radius: 30px;
+    background: white;
+    color: var(--maroon);
+    text-decoration: none;
+    font-weight: 700;
+    transition: .3s;
+    border: 2px solid white;
+}
+
+.btn:hover {
+    background: var(--maroon);
+    color: white;
+}
+
+/* SECTION */
+section {
+    padding: 80px 8%;
+}
+
+.section-title {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+}
+
+.section-title small {
+    color: var(--maroon-light);
+    letter-spacing: 3px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.section-title h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--maroon);
+    line-height: 1.3;
+    margin: 10px 0 15px;
+}
+
+/* ABOUT */
+.intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.intro img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 22px;
+    border: 5px solid var(--cream);
+    box-shadow: 10px 10px 0 var(--maroon);
+}
+
+.intro h2 {
+    color: var(--maroon);
+    font-size: 35px;
+    line-height: 1.3;
+    margin: 12px 0 20px;
+}
+
+.intro p {
+    margin-bottom: 15px;
+}
+
+/* HISTORY */
+.history {
+    background: var(--cream);
+}
+
+.timeline {
+    max-width: 800px;
+    margin: auto;
+    border-left: 3px solid var(--maroon-light);
+    padding-left: 30px;
+}
+
+.event {
+    position: relative;
+    padding: 24px;
+    margin-bottom: 24px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px #80002010;
+}
+
+.event::before {
+    content: "";
+    position: absolute;
+    left: -40px;
+    top: 28px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--maroon);
+    border: 4px solid #F8E8EC;
+}
+
+.event h3 {
+    color: var(--maroon);
+    margin-bottom: 8px;
+}
+
+/* FLOWER CARDS */
+.flowers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.flower-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #F0DDE2;
+    box-shadow: 0 8px 25px #8000200D;
+    transition: .3s;
+}
+
+.flower-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px #80002020;
+}
+
+.flower-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+.flower-info {
+    padding: 22px;
+}
+
+.flower-info h3 {
+    color: var(--maroon);
+    font-size: 22px;
+    margin: 8px 0;
+}
+
+.color-label {
+    display: inline-block;
+    background: #F8E5EA;
+    color: var(--maroon);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* COLOR COLLECTION */
+.color-section {
+    background: var(--cream);
+}
+
+.colors {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.color-item {
+    text-align: center;
+    background: white;
+    padding: 22px 10px;
+    border-radius: 16px;
+    border: 1px solid #F0DDE2;
+}
+
+.swatch {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    border: 3px solid white;
+    box-shadow: 0 2px 10px #0002;
+}
+
+.color-item h3 {
+    font-size: 16px;
+    color: var(--maroon);
+}
+
+.color-item p {
+    font-size: 12px;
+    color: #74666A;
+}
+
+/* GALLERY */
+.gallery {
+    background: white;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 14px;
+    transition: .3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.02);
+}
+
+.gallery-grid img:first-child {
+    height: 475px;
+    grid-row: span 2;
+}
+
+/* CLOSING */
+.closing {
+    background: var(--maroon);
+    color: white;
+    text-align: center;
+}
+
+.closing h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.closing p {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    color: #F8E5EA;
+}
+
+.closing .btn {
+    background: white;
+    color: var(--maroon);
+}
+
+footer {
+    background: var(--maroon-dark);
+    color: #F8E5EA;
+    text-align: center;
+    padding: 30px 8%;
+}
+
+footer p {
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+footer a {
+    color: #FFDCE5;
+}
+
+/* RESPONSIVE */
+@media (max-width: 850px) {
+    nav {
+        padding: 15px 5%;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+    }
+
+    .flowers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid img:first-child {
+        height: 250px;
+        grid-row: auto;
+    }
+
+    .gallery-grid img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 560px) {
+    nav {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 520px;
+        padding: 60px 7%;
+    }
+
+    section {
+        padding: 60px 6%;
+    }
+
+    .flowers {
+        grid-template-columns: 1fr;
+    }
+
+    .colors {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .intro img {
+        height: 280px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid img:first-child,
+    .gallery-grid img {
+        height: 250px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGASI -->
+<nav>
+    <div class="logo">Flora<span>Garden.</span></div>
+
+    <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#sejarah">Sejarah</a></li>
+        <li><a href="#bunga">Jenis Bunga</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+    </ul>
+</nav>
+
+<!-- HALAMAN UTAMA -->
+<header class="hero" id="beranda">
+    <div class="hero-content">
+        <span class="tag">🌹 Explore the Beauty of Nature</span>
+
+        <h1>
+            Keindahan Alam dalam
+            <span>Warna dan Bunga</span>
+        </h1>
+
+        <p>
+            Selamat datang di Flora Garden, tempat keindahan bunga
+            berpadu dengan suasana alam yang menenangkan. Kenali
+            berbagai jenis bunga, warna, dan sejarah taman bunga.
+        </p>
+
+        <a class="btn" href="#tentang">Jelajahi Taman →</a>
+    </div>
+</header>
+
+<!-- TENTANG -->
+<section id="tentang">
+    <div class="intro">
+        <img
+            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=85"
+            alt="Hamparan bunga berwarna-warni">
+
+        <div>
+            <small style="color:#A83B58;letter-spacing:2px">
+                TENTANG TAMAN BUNGA
+            </small>
+
+            <h2>Surga Kecil Penuh Warna dan Kehidupan</h2>
+
+            <p>
+                Taman bunga adalah kawasan yang ditata dengan berbagai
+                jenis tanaman berbunga untuk menciptakan lingkungan
+                yang indah, nyaman, dan menyegarkan.
+            </p>
+
+            <p>
+                Selain menjadi tempat rekreasi, taman bunga juga
+                bermanfaat sebagai sarana edukasi untuk mengenal
+                keanekaragaman tumbuhan dan pentingnya menjaga alam.
+            </p>
+
+            <p>
+                Perpaduan warna merah, putih, kuning, ungu, dan merah
+                muda menghadirkan pemandangan yang memanjakan mata.
+                Setiap bunga memiliki karakteristik dan keunikannya
+                masing-masing.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- SEJARAH -->
+<section class="history" id="sejarah">
+    <div class="section-title">
+        <small>Jejak Perjalanan</small>
+        <h2>Sejarah Taman Bunga Nusantara</h2>
+        <p>
+            Mengenal perjalanan salah satu destinasi taman bunga
+            terkenal di Indonesia.
+        </p>
+    </div>
+
+    <div class="timeline">
+        <div class="event">
+            <h3>1992 — Awal Gagasan</h3>
+            <p>
+                Pembangunan Taman Bunga Nusantara dirintis melalui
+                gagasan Suhardani Bustanil Arifin untuk menghadirkan
+                taman bunga berkonsep internasional di Indonesia.
+            </p>
+        </div>
+
+        <div class="event">
+            <h3>1992–1995 — Pengembangan Taman</h3>
+            <p>
+                Kawasan taman dikembangkan dengan koleksi bunga,
+                penataan lanskap, serta berbagai taman tematik
+                yang menampilkan keindahan tanaman.
+            </p>
+        </div>
+
+        <div class="event">
+            <h3>10 September 1995 — Peresmian</h3>
+            <p>
+                Taman Bunga Nusantara diresmikan oleh Presiden
+                Soeharto. Lokasinya berada di kawasan Kawungluwuk,
+                Sukaresmi, Kabupaten Cianjur, Jawa Barat.
+            </p>
+        </div>
+
+        <div class="event">
+            <h3>Masa Kini — Wisata dan Edukasi</h3>
+            <p>
+                Taman Bunga Nusantara menjadi destinasi untuk
+                menikmati taman tematik, mengenal berbagai tanaman,
+                berfoto, dan berwisata bersama keluarga.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- JENIS BUNGA -->
+<section id="bunga">
+    <div class="section-title">
+        <small>Flora Collection</small>
+        <h2>Aneka Jenis Bunga</h2>
+        <p>
+            Kenali berbagai jenis bunga dengan bentuk, warna,
+            dan keindahan yang berbeda.
+        </p>
+    </div>
+
+    <div class="flowers">
+
+        <article class="flower-card">
+            <img
+                src="https://images.unsplash.com/photo-1548586196-aa5803b77379?auto=format&fit=crop&w=800&q=80"
+                alt="Bunga mawar">
+            <div class="flower-info">
+                <span class="color-label">Merah dan merah muda</span>
+                <h3>Bunga Mawar</h3>
+                <p>
+                    Mawar memiliki kelopak yang indah dan aroma
+                    khas. Bunga ini sering menjadi simbol kasih
+                    sayang dan tersedia dalam beragam warna.
+                </p>
+            </div>
+        </article>
+
+        <article class="flower-card">
+            <img
+                src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=800&q=80"
+                alt="Bunga tulip">
+            <div class="flower-info">
+                <span class="color-label">Merah, kuning, ungu</span>
+                <h3>Bunga Tulip</h3>
+                <p>
+                    Tulip memiliki bentuk seperti cangkir dengan
+                    kelopak yang rapi. Bunga ini sangat terkenal
+                    dalam budaya Belanda.
+                </p>
+            </div>
+        </article>
+
+        <article class="flower-card">
+            <img
+                src="https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=800&q=80"
+                alt="Bunga matahari">
+            <div class="flower-info">
+                <span class="color-label">Kuning cerah</span>
+                <h3>Bunga Matahari</h3>
+                <p>
+                    Bunga matahari dikenal dengan kepala bunga
+                    yang besar dan warna kuning cerah. Tanaman
+                    ini menyukai sinar matahari.
+                </p>
+            </div>
+        </article>
+
+        <article class="flower-card">
+            <img
+                src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80"
+                alt="Bunga anggrek">
+            <div class="flower-info">
+                <span class="color-label">Ungu dan putih</span>
+                <h3>Bunga Anggrek</h3>
+                <p>
+                    Anggrek memiliki bentuk unik dan variasi
+                    warna yang beragam. Banyak jenisnya tumbuh
+                    menempel pada tumbuhan lain.
+                </p>
+            </div>
+        </article>
+
+        <article class="flower-card">
+            <img
+                src="https://images.unsplash.com/photo-1494625927555-6ec4433b1571?auto=format&fit=crop&w=800&q=80"
+                alt="Bunga lavender">
+            <div class="flower-info">
+                <span class="color-label">Ungu kebiruan</span>
+                <h3>Bunga Lavender</h3>
+                <p>
+                    Lavender dikenal karena aroma khas dan
+                    bunganya yang berwarna ungu. Tanaman ini
+                    banyak digunakan sebagai tanaman hias.
+                </p>
+            </div>
+        </article>
+
+        <article class="flower-card">
+            <img
+                src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=800&q=80"
+                alt="Bunga berwarna putih">
+            <div class="flower-info">
+                <span class="color-label">Putih</span>
+                <h3>Bunga Melati</h3>
+                <p>
+                    Melati memiliki bunga kecil berwarna putih
+                    dan aroma harum. Bunga ini dikenal dalam
+                    berbagai tradisi di Indonesia.
+                </p>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- ANEKA WARNA -->
+<section class="color-section">
+    <div class="section-title">
+        <small>Color Collection</small>
+        <h2>Pesona Warna Bunga</h2>
+        <p>
+            Setiap warna memberikan kesan yang berbeda
+            dan menjadikan taman semakin menarik.
+        </p>
+    </div>
+
+    <div class="colors">
+        <div class="color-item">
+            <div class="swatch" style="background:#E63950"></div>
+            <h3>Merah</h3>
+            <p>Berani dan ceria</p>
+        </div>
+
+        <div class="color-item">
+            <div class="swatch" style="background:#F3A4BC"></div>
+            <h3>Merah Muda</h3>
+            <p>Lembut dan manis</p>
+        </div>
+
+        <div class="color-item">
+            <div class="swatch" style="background:#F4CF45"></div>
+            <h3>Kuning</h3>
+            <p>Cerah dan hangat</p>
+        </div>
+
+        <div class="color-item">
+            <div class="swatch" style="background:#9673D4"></div>
+            <h3>Ungu</h3>
+            <p>Unik dan menawan</p>
+        </div>
+
+        <div class="color-item">
+            <div class="swatch" style="background:#FFFFFF;border:2px solid #DDD"></div>
+            <h3>Putih</h3>
+            <p>Bersih dan sederhana</p>
+        </div>
+    </div>
+</section>
+
+<!-- GALERI -->
+<section class="gallery" id="galeri">
+    <div class="section-title">
+        <small>Photo Gallery</small>
+        <h2>Galeri Keindahan Taman</h2>
+        <p>
+            Nikmati pesona bunga dan keindahan alam
+            dalam berbagai kombinasi warna.
+        </p>
+    </div>
+
+    <div class="gallery-grid">
+        <img
+            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85"
+            alt="Taman bunga berwarna-warni">
+
+        <img
+            src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=700&q=80"
+            alt="Bunga tulip">
+
+        <img
+            src="https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=700&q=80"
+            alt="Bunga matahari">
+
+        <img
+            src="https://images.unsplash.com/photo-1494625927555-6ec4433b1571?auto=format&fit=crop&w=700&q=80"
+            alt="Bunga lavender">
+
+        <img
+            src="https://images.unsplash.com/photo-1548586196-aa5803b77379?auto=format&fit=crop&w=700&q=80"
+            alt="Bunga mawar">
+    </div>
+</section>
+
+<!-- PENUTUP -->
+<section class="closing">
+    <h2>Jaga Bunga, Rawat Bumi 🌹</h2>
+
+    <p>
+        Keindahan taman akan terus terjaga jika kita merawat
+        tanaman, menjaga kebersihan, menghemat air, dan tidak
+        merusak bunga. Mari lestarikan alam untuk generasi mendatang.
+    </p>
+
+    <a class="btn" href="#beranda">Kembali ke Atas ↑</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="logo" style="color:white">
+        Flora<span>Garden.</span>
+    </div>
+
+    <p>Keindahan Alam, Warna, dan Cerita dalam Satu Taman.</p>
+
+    <p>© 2026 Flora Garden | Website Edukasi Taman Bunga</p>
+
+    <p>
+        Referensi sejarah:
+        <a href="https://www.tamanbunganusantara.com/"
+           target="_blank"
+           rel="noopener noreferrer">
+           Taman Bunga Nusantara
+        </a>
+    </p>
+</footer>
+
+</body>
+</html>
